@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>
+        充值完成
+    </title>
+    <link rel="stylesheet" type="text/css" href="http://sh.189.cn/css/css_biz/main_biz.css"/>
+    <link rel="stylesheet" type="text/css" href="http://sh.189.cn/css/css_biz/header.css"/>
+    <link rel="stylesheet" type="text/css" href="/service/styles/zhengqi/css/page.css"/>
+    <link rel="stylesheet" type="text/css" href="/service/styles/js/common/modal/css/modal.css"/>
+    <script src="/service/styles/js/jquery-1.11.2.min.js">
+    </script>
+    <script src="/service/styles/js/common/modal/modal.js">
+    </script>
+    <script type="text/javascript" src="/service/styles/zhengqi/js/common/common.js">
+    </script>
+    <script type="text/javascript" src="/service/styles/zhengqi/js/main.js">
+    </script>
+</head>
+<body>
+<!--头部 开始-->
+<script src="http://sh.189.cn/js/header_biz.js" type="text/javascript" charset="utf-8">
+</script>
+<div class="header w100 f12">
+<!--top 内容开始-->
+<div class="TopbarWrap w100 h36 bbw1">
+    <div class="topbar w1180">
+        <!--top 左侧内容-->
+        <div class="topL w500 fl h36 f14">
+            <span class="dplb h36 lh36 fl mr15">
+              <div class="icon mid sc dplb fl mt12">
+              </div>
+              <a class="color-org" onclick="javascript:addfavor();" id="collection" title="加入收藏"
+                 href="javascript:void(0)">
+                  收藏中国电信
+              </a>
+            </span>
+            <iframe src="http://service.sh.189.cn/service/jsp/zhengqi/login/login_welcome_iframe.jsp" width="350"
+                    height="36" allowtransparency="true" frameborder="0" scrolling="no"
+                    style="background-color:transparent">
+            </iframe>
+        </div>
+        <!--top 右侧内容-->
+        <div class="topR fr f14">
+            <ul class="RitList">
+                <li class="h36 lh36 hover1">
+                    <div class="icon mid yx dplb fl mt15">
+                    </div>
+                    <a href="http://mail.189.cn">
+                        189邮箱
+                    </a>
+                </li>
+                <li class="h36 lh36 mr8 ml8 cc">
+                <span>
+                  |
+                </span>
+                </li>
+                <li class="h36 lh36">
+                    <a href="/">
+                        个人与家庭
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--top 内容结束-->      <!--logo search-->
+<div class="logo w1180 relative">
+        <span class="fl mt15">
+          <div class="logo_img fl mr20">
+              <a href="http://sh.189.cn/biz/">
+                  <img src="http://sh.189.cn/images/img_biz/logo.png"/>
+              </a>
+          </div>
+          <div class="fl mr20">
+              <div class="cityChoose relative">
+                  <div class="biz_city city mt25">
+                      <a href="javascript:void(0)" class="sh dplb ml15">
+                          上海
+                      </a>
+                  </div>
+                  <div class="index_city absolute border1">
+                      <div class="close more absolute">
+                      </div>
+                      <ul class="city_list">
+                          <li class="mt10">
+                    <span class="fl color-blue mr15 f14 w25">
+                      A-G
+                    </span>
+                    <span class="dpl">
+                      <a href="http://bj.189.cn/" target="_blank">
+                          北京
+                      </a>
+                      <a href="http://ah.189.cn/" target="_blank">
+                          安徽
+                      </a>
+                      <a href="http://cq.189.cn/" target="_blank">
+                          重庆
+                      </a>
+                      <a href="http://fj.189.cn/" target="_blank">
+                          福建
+                      </a>
+                      <a href="http://gd.189.cn/" target="_blank">
+                          广东
+                      </a>
+                      <a href="http://gs.189.cn/" target="_blank">
+                          甘肃
+                      </a>
+                      <a href="http://gx.189.cn/" target="_blank">
+                          广西
+                      </a>
+                      <a href="http://gz.189.cn/" target="_blank">
+                          贵州
+                      </a>
+                    </span>
+                          </li>
+                          <li class="mt10">
+                    <span class="fl color-blue mr15 f14 w25">
+                      H-J
+                    </span>
+                    <span class="dpl">
+                      <a href="http://hb.189.cn/" target="_blank">
+                          湖北
+                      </a>
+                      <a href="http://hn.189.cn/" target="_blank">
+                          湖南
+                      </a>
+                      <a href="http://he.189.cn/" target="_blank">
+                          河北
+                      </a>
+                      <a href="http://ha.189.cn/" target="_blank">
+                          河南
+                      </a>
+                      <a href="http://hi.189.cn/" target="_blank">
+                          海南
+                      </a>
+                      <a href="http://hl.189.cn/" target="_blank">
+                          黑龙江
+                      </a>
+                      <a href="http://js.189.cn/" target="_blank">
+                          江苏
+                      </a>
+                      <a href="http://jl.189.cn/" target="_blank">
+                          吉林
+                      </a>
+                      <a href="http://jx.189.cn/" target="_blank">
+                          江西
+                      </a>
+                    </span>
+                          </li>
+                          <li class="mt10">
+                    <span class="fl color-blue mr15 f14 w25">
+                      L-S
+                    </span>
+                    <span class="dpl">
+                      <a href="http://ln.189.cn/" target="_blank">
+                          辽宁
+                      </a>
+                      <a href="http://nm.189.cn/" target="_blank">
+                          内蒙古
+                      </a>
+                      <a href="http://nx.189.cn/" target="_blank">
+                          宁夏
+                      </a>
+                      <a href="http://qh.189.cn/" target="_blank">
+                          青海
+                      </a>
+                      <a href="http://sd.189.cn/" target="_blank">
+                          山东
+                      </a>
+                      <a href="http://sh.189.cn/" target="_blank">
+                          上海
+                      </a>
+                      <a href="http://sx.189.cn/" target="_blank">
+                          山西
+                      </a>
+                      <a href="http://sn.189.cn/" target="_blank">
+                          陕西
+                      </a>
+                      <a href="http://sc.189.cn/" target="_blank">
+                          四川
+                      </a>
+                    </span>
+                          </li>
+                          <li class="mt10">
+                    <span class="fl color-blue mr15 f14 w25">
+                      T-Z
+                    </span>
+                    <span class="dpl">
+                      <a href="http://tj.189.cn/" target="_blank">
+                          天津
+                      </a>
+                      <a href="http://xj.189.cn/" target="_blank">
+                          新疆
+                      </a>
+                      <a href="http://xz.189.cn/" target="_blank">
+                          西藏
+                      </a>
+                      <a href="http://yn.189.cn/" target="_blank">
+                          云南
+                      </a>
+                      <a href="http://zj.189.cn/" target="_blank">
+                          浙江
+                      </a>
+                    </span>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+        </span>
+    <iframe src="http://sh.189.cn/search.html" class="fl" width="580" height="110" allowtransparency="true"
+            frameborder="0" scrolling="no" style="background-color:transparent">
+    </iframe>
+</div>
+<!--nav 开始-->
+<div class="nav w1180 h64 relative">
+<ul class="navList fl">
+<li class="fir">
+    <a href="http://sh.189.cn/biz/" class="menu">
+        首页
+    </a>
+</li>
+<li class="fir">
+    <a href="http://sh.189.cn/biz/cpzs/" class="menu">
+        产品导购
+    </a>
+
+    <div class="subMenu pt15 pb15 pl10 pr20 border1 absolute o-hidden">
+        <div class="modular fl pl20 brw">
+            <h6 class="pl12 lh36">
+                行业应用
+            </h6>
+            <ul class="subList">
+                <li>
+                    <a href="http://sh.189.cn/biz/application/xyyy/17327.html">
+                        天翼对讲
+                    </a>
+                </li>
+                <li>
+                    <a href="http://sh.189.cn/biz/application/xyyy/17328.html">
+                        手机看店
+                    </a>
+                </li>
+                <li>
+                    <a href="http://sh.189.cn/biz/application/xyyy/17329.html">
+                        安全办公
+                    </a>
+                </li>
+                <li>
+                    <a href="http://sh.189.cn/biz/application/hydh/17340.html">
+                        会易通（增强版）
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="modular fl pl20 brw">
+            <h6 class="pl12 lh36">
+                会议电话
+            </h6>
+            <ul class="subList">
+                <li>
+                    <a href="http://sh.189.cn/biz/application/hydh/17336.html">
+                        会议一呼通
+                    </a>
+                </li>
+                <li>
+                    <a href="http://sh.189.cn/biz/application/hydh/17337.html">
+                        全球会易通
+                    </a>
+                </li>
+                <li>
+                    <a href="http://sh.189.cn/biz/application/hydh/17339.html">
+                        虚拟呼叫中心
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="modular fl pl20 brw">
+            <h6 class="pl12 lh36">
+                企业宽带
+            </h6>
+            <ul class="subList">
+                <li>
+                    <a href="http://sh.189.cn/biz/application/qykd/17334.html">
+                        政企商务宽带
+                    </a>
+                </li>
+                <li>
+                    <a href="http://sh.189.cn/biz/application/qykd/17335.html">
+                        政企专线宽带
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="modular fl pl20 brw">
+            <h6 class="pl12 lh36">
+                数据专线
+            </h6>
+            <ul class="subList">
+                <li>
+                    <a href="http://sh.189.cn/biz/application/sjzx/17331.html">
+                        MSTP(以太网专线）
+                    </a>
+                </li>
+                <li>
+                    <a href="http://sh.189.cn/biz/application/sjzx/17332.html">
+                        MPLS VPN
+                    </a>
+                </li>
+                <li>
+                    <a href="http://sh.189.cn/biz/application/sjzx/17333.html">
+                        数字电路SDH
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="modular fl pl20 brw">
+            <h6 class="pl12 lh36">
+                物联网
+            </h6>
+            <ul class="subList">
+                <li>
+                    <a href="http://sh.189.cn/biz/application/wlw/17313.html">
+                        乐驾魔方
+                    </a>
+                </li>
+                <li>
+                    <a href="http://sh.189.cn/biz/application/wlw/17314.html">
+                        天翼物联（智机通）
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="modular fl pl20 brw">
+            <h6 class="pl12 lh36">
+                语音业务
+            </h6>
+            <ul class="subList">
+                <li>
+                    <a href="http://sh.189.cn/biz/application/yyyw/17315.html">
+                        普通直线电话
+                    </a>
+                </li>
+                <li>
+                    <a href="http://sh.189.cn/biz/application/yyyw/17316.html">
+                        DID
+                    </a>
+                </li>
+                <li>
+                    <a href="http://sh.189.cn/biz/application/yyyw/17317.html">
+                        30B+D
+                    </a>
+                </li>
+                <li>
+                    <a href="http://sh.189.cn/biz/application/yyyw/17318.html">
+                        Centrex
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="modular fl pl20">
+            <h6 class="pl12 lh36">
+                云产品
+            </h6>
+            <ul class="subList">
+                <li>
+                    <a href="http://sh.189.cn/biz/application/ycp/17322.html">
+                        云主机
+                    </a>
+                </li>
+                <li>
+                    <a href="http://sh.189.cn/biz/application/ycp/17323.html">
+                        云加速
+                    </a>
+                </li>
+                <li>
+                    <a href="http://sh.189.cn/biz/application/ycp/17324.html">
+                        云灾备
+                    </a>
+                </li>
+                <li>
+                    <a href="http://sh.189.cn/biz/application/ycp/17325.html">
+                        定制云
+                    </a>
+                </li>
+                <li>
+                    <a href="http://sh.189.cn/biz/application/ycp/17326.html">
+                        云数据中心（IDC）
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</li>
+<li class="fir">
+    <a href="http://sh.189.cn/biz/solution/" class="menu">
+        行业解决方案
+    </a>
+
+    <div class="subMenu pt15 pb15 pl10 pr20 border1 absolute o-hidden">
+        <div class="modular fl pl20 brw">
+            <h6 class="pl12 lh36">
+                制造
+            </h6>
+            <ul class="subList">
+                <li>
+                    <a href="http://sh.189.cn/biz/solution/zz/17354.html">
+                        智能化生产
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="modular fl pl20 brw">
+            <h6 class="pl12 lh36">
+                教育
+            </h6>
+            <ul class="subList">
+                <li>
+                    <a href="http://sh.189.cn/biz/solution/jy/17355.html">
+                        云录播
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="modular fl pl20 brw">
+            <h6 class="pl12 lh36">
+                商贸连锁
+            </h6>
+            <ul class="subList">
+                <li>
+                    <a href="http://sh.189.cn/biz/solution/smls/17356.html">
+                        SAP
+                    </a>
+                </li>
+                <li>
+                    <a href="http://sh.189.cn/biz/solution/smls/17357.html">
+                        手机看店
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="modular fl pl20 brw">
+            <h6 class="pl12 lh36">
+                医疗
+            </h6>
+            <ul class="subList">
+                <li>
+                    <a href="http://sh.189.cn/biz/solution/yl/17358.html">
+                        医疗影像云
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="modular fl pl20 brw">
+            <h6 class="pl12 lh36">
+                园区
+            </h6>
+            <ul class="subList">
+                <li>
+                    <a href="http://sh.189.cn/biz/solution/yq/17359.html">
+                        区域云
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="modular fl pl20 brw">
+            <h6 class="pl12 lh36">
+                政务
+            </h6>
+            <ul class="subList">
+                <li>
+                    <a href="http://sh.189.cn/biz/solution/zw/17360.html">
+                        政务云
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="modular fl pl20">
+            <h6 class="pl12 lh36">
+                交通
+            </h6>
+            <ul class="subList">
+                <li>
+                    <a href="http://sh.189.cn/biz/solution/jt/17353.html">
+                        车联网
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</li>
+<li class="fir">
+    <a href="http://sh.189.cn/biz/service/" class="menu">
+        自助服务
+    </a>
+
+    <div class="subMenu pt15 pb15 pl10 pr20 border1 absolute o-hidden">
+        <div class="modular fl pl20 brw">
+            <h6 class="pl12 lh36">
+                查询服务
+            </h6>
+            <ul class="subList">
+                <li>
+                    <a href="http://service.sh.189.cn/service/biz/query/bill">
+                        账单查询
+                    </a>
+                </li>
+                <li>
+                    <a href="http://service.sh.189.cn/service/biz/billDetail/init">
+                        详单查询
+                    </a>
+                </li>
+                <li>
+                    <a href="http://service.sh.189.cn/service/biz/zqTelFareSearch/telSearchInit">
+                        话费查询
+                    </a>
+                </li>
+                <li>
+                    <a href="http://service.sh.189.cn/service/biz/zqTelFareSearch/balanceSearchInit">
+                        余额查询
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="modular fl pl20 brw">
+            <h6 class="pl12 lh36">
+                充值缴费
+            </h6>
+            <ul class="subList">
+                <li>
+                    <a href="http://service.sh.189.cn/service/biz/pay/bill">
+                        账单支付
+                    </a>
+                </li>
+                <li>
+                    <a href="http://service.sh.189.cn/service/biz/pay/phone">
+                        设备号码充值
+                    </a>
+                </li>
+                <li>
+                    <a href="http://service.sh.189.cn/service/biz/pay/fenZhang">
+                        分账序号充值
+                    </a>
+                </li>
+                <li>
+                    <a href="http://service.sh.189.cn/service/biz/zqTicketPrint/judgeJump">
+                        增值税发票预约
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="modular fl pl20 brw">
+            <h6 class="pl12 lh36">
+                企业管理
+            </h6>
+            <ul class="subList">
+                <li>
+                    <a href="http://service.sh.189.cn/service/biz/infoManagement/init">
+                        信息管理
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="modular fl pl20 brw">
+            <h6 class="pl12 lh36">
+                便民服务
+            </h6>
+            <ul class="subList">
+                <li>
+                    <a href="http://service.sh.189.cn/service/biz/query/puk">
+                        PUK码查询
+                    </a>
+                </li>
+                <li>
+                    <a href="http://service.sh.189.cn/service/biz/query/attribution">
+                        归属地查询
+                    </a>
+                </li>
+                <li>
+                    <a href="http://service.sh.189.cn/service/biz/query/areaCode">
+                        区号及国际代码查询
+                    </a>
+                </li>
+                <li>
+                    <a href="http://service.sh.189.cn/service/biz/zqRealName/init">
+                        实名登记补录
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</li>
+</ul>
+<iframe src="http://service.sh.189.cn/service/jsp/zhengqi/login/login_head_iframe.jsp" width="170" height="34"
+        class="fr mt15" allowtransparency="true" frameborder="0" scrolling="no" style="background-color:transparent">
+</iframe>
+</div>
+</div>
+<!--头部 结束-->    <!--头部 结束-->    <!-- 用户中心 开始-->
+<script src="http://static.gridsumdissector.com/js/Clients/GWD-002356-BECBB5/gs.js">
+</script>
+<meta charset="UTF-8"/>
+<script type="text/javascript">
+    //<![CDATA[
+
+    $(function () {
+        var now = new Date();
+        var hour = now.getHours();
+        var welcome = "";
+        if (hour < 6) {
+            welcome = "凌晨好";
+        } else if (hour < 9) {
+            welcome = "早上好";
+        } else if (hour < 12) {
+            welcome = "上午好";
+        } else if (hour < 14) {
+            welcome = "中午好";
+        } else if (hour < 17) {
+            welcome = "下午好";
+        } else if (hour < 19) {
+            welcome = "傍晚好";
+        } else if (hour < 22) {
+            welcome = "晚上好";
+        } else {
+            welcome = "夜间好";
+        }
+        $("#wel").text(welcome + ",");
+        queryLastTime();
+    });
+
+
+    function queryLastTime() {
+        $.ajax({
+            type: 'get',
+            url: '' + path + '/biz/lastLoginTime/last',
+            dataType: 'json',
+            async: false,
+            success: function (data) {
+                if (data.account != null && data.account != '') {
+                    $(".email").show();
+                    $(".email").html("邮箱：" + data.account);
+                    $(".separator").show();
+                }
+                $("#last").text("上次登录时间：" + data.lasttime);
+            }
+        });
+    }
+
+    //]]>
+</script>
+<div class="user_center w1180 m0 f14 clearfix">
+    <div class="bg">
+        <img src="/service/styles/zhengqi/images/banner.png" alt=""/>
+    </div>
+    <div class="user_head fl">
+        <img src="/service/styles/zhengqi/images/icon_head.png" alt=""/>
+    </div>
+    <div class="user_info fl">
+        <div class="title fb">
+          <span id="wel">
+            上午好,
+          </span>
+          <span class="nick_name">
+          </span>
+          <span class="welcome ml20">
+            欢迎来到中国电信
+          </span>
+        </div>
+        <div class="contact">
+          <span class="email" style="display: none;">
+          </span>
+          <span class="separator ml10" style="display: none;">
+            |
+          </span>
+          <span class="last_login_date" id="last">
+          </span>
+        </div>
+    </div>
+</div>
+<input id="loginType" type="hidden" value=""/>
+<!-- 用户中心 结束-->
+<div class="w1180 m0 f14">
+    <div class="hangye_yy">
+        <!-- 面包屑导航 开始 -->
+        <div class="s_crumb">
+          <span class="root">
+            您当前的位置：
+          </span>
+          <span>
+            首页
+          </span>
+          <span class="operator">
+            &gt;
+          </span>
+          <span>
+            服务
+          </span>
+          <span class="operator">
+            &gt;
+          </span>
+          <span class="color-blue">
+            充值缴费
+          </span>
+        </div>
+        <!-- 面包屑导航 结束 -->        <!-- 主体内容部分 开始 -->
+        <div class="s_main clearfix mb20">
+            <!-- 侧栏 开始 -->
+            <script src="/service/styles/zhengqi/js/common/aside.js">
+            </script>
+            <div class="sm_aside fl">
+                <div class="menu">
+                    <div class="title fb">
+                        <img src="/service/styles/zhengqi/images/search_service.png" alt="" class="img1"/>
+                        <img src="/service/styles/zhengqi/images/search_service_hover.png" alt="" class="img2"/>
+                <span>
+                  查询服务
+                </span>
+                    </div>
+                    <ul class="submenu">
+                        <li id="item2">
+                            <a href="/service/biz/devDetail">
+                                套餐使用查询
+                            </a>
+                        </li>
+                        <li id="item9">
+                            <a href="/service/biz/query/bill">
+                                账单查询
+                            </a>
+                        </li>
+                        <li id="item3">
+                            <a href="/service/biz/query/businessInit">
+                                增值业务查询
+                            </a>
+                        </li>
+                        <li id="item5">
+                            <a href="/service/biz/query/remind">
+                                服务提醒定制查询
+                            </a>
+                        </li>
+                        <li id="item6">
+                            <a href="/service/biz/billDetail/init">
+                                详单查询
+                            </a>
+                        </li>
+                        <li id="item7">
+                            <a href="/service/biz/zqTelFareSearch/telSearchInit">
+                                话费查询
+                            </a>
+                        </li>
+                        <li id="item8">
+                            <a href="/service/biz/zqTelFareSearch/balanceSearchInit">
+                                余额查询
+                            </a>
+                        </li>
+                        <li id="item1">
+                            <a href="/service/biz/query/accountInfoInit">
+                                客户资料查询
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="menu hover">
+                    <div class="title fb">
+                        <img src="/service/styles/zhengqi/images/jiaofei.png" alt="" class="img1"/>
+                        <img src="/service/styles/zhengqi/images/jiaofei_hover.png" alt="" class="img2"/>
+                <span>
+                  充值缴费
+                </span>
+                    </div>
+                    <ul class="submenu">
+                        <li id="item24">
+                            <a href="/service/biz/pay/bill">
+                                账单支付
+                            </a>
+                        </li>
+                        <li id="item19" class="hover">
+                            <a href="/service/biz/pay/phone">
+                                设备号码充值
+                            </a>
+                        </li>
+                        <li id="item23">
+                            <a href="/service/biz/pay/fenZhang">
+                                分账序号充值
+                            </a>
+                        </li>
+                        <li id="item20">
+                            <a href="/service/biz/zqRechargeRecord/searchInit">
+                                充值缴费记录查询
+                            </a>
+                        </li>
+                        <li id="item13">
+                            <a href="/service/biz/zqTicketPrint/judgeJump">
+                                增值税发票预约及查询
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="menu" id="qiye">
+                    <div class="title fb">
+                        <img src="/service/styles/zhengqi/images/qiyeguanli.png" alt="" class="img1"/>
+                        <img src="/service/styles/zhengqi/images/qiyeguanli_hover.png" alt="" class="img2"/>
+                <span>
+                  企业管理
+                </span>
+                    </div>
+                    <ul class="submenu">
+                        <li id="item100">
+                            <a href="/service/biz/infoManagement/init">
+                                信息管理
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="menu">
+                    <div class="title fb">
+                        <img src="/service/styles/zhengqi/images/bianmin.png" alt="" class="img1"/>
+                        <img src="/service/styles/zhengqi/images/bianmin_hover.png" alt="" class="img2"/>
+                <span>
+                  便民服务
+                </span>
+                    </div>
+                    <ul class="submenu">
+                        <li id="item32">
+                            <a href="/service/biz/query/areaCode">
+                                区号及国际代码查询
+                            </a>
+                        </li>
+                        <li id="item29">
+                            <a href="/service/biz/query/puk">
+                                PUK码查询
+                            </a>
+                        </li>
+                        <li id="item31">
+                            <a href="/service/biz/query/attribution">
+                                归属地查询
+                            </a>
+                        </li>
+                        <li id="item30">
+                            <a href="/service/biz/zqRealName/init">
+                                实名登记补录
+                            </a>
+                        </li>
+                        <li id="item27">
+                            <a href="/service/biz/pretty/init">
+                                靓号政策规则
+                            </a>
+                        </li>
+                        <li id="item33">
+                            <a href="/service/biz/query/BusinessHall">
+                                服务网点信息
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 侧栏 结束 -->          <!-- 右侧内容区域 开始 -->
+            <div class="sm_content fr" item-id="item19">
+                <!-- 支付成功 -->
+                <div class="frm submit_result">
+                    <div class="fb title" id="result_msg">
+                        充值完成
+                    </div>
+                    <!-- 成功时结果信息 -->              <!-- 故障时信息 -->              <!-- 批量1188ka -->
+                    <div class="info biginfo">
+                        <div class="i_title f20 fb">
+                            电信充值卡批量充值结果如下
+                        </div>
+                        <div class="i_content">
+                            <p>
+                                支付失败！流水号：;失败原因:卡密码错误。
+                            </p>
+                        </div>
+                        <div class="i_other">
+                  <span class="io_text">
+                    您还可以
+                  </span>
+                            <a href="/service/biz/pay/phone" class="">
+                                继续充值
+                            </a>
+                            <!--  <a href="#" class="io_link">查看订单</a> -->                </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 右侧内容区域 结束 -->        </div>
+        <!-- 主体内容部分 结束 -->      </div>
+</div>
+<!--尾部 开始-->
+<script src="http://sh.189.cn/js/footer_biz.js" type="text/javascript" charset="utf-8">
+</script>
+<div class="footer btw pb20">
+    <div class="footOne h175 w1180 m0 pt20 pb20">
+        <ul class="guild fl o-hidden">
+            <li class="h175 fl bwr2 w300">
+                <div class="site tc">
+                    <a href="http://sh.189.cn/biz/notice/" target="_blank">
+                        <img src="http://sh.189.cn/images/img_biz/new.png"/>
+                    </a>
+                </div>
+                <h4 class="lh30 tc">
+                    <a href="http://sh.189.cn/biz/notice/" target="_blank">
+                        最新动态
+                    </a>
+                </h4>
+            </li>
+            <li class="h175 fl bwr2 w300">
+                <div class="site tc">
+                    <a href="http://hezuo.sh.189.cn/" target="_blank">
+                        <img src="http://sh.189.cn/images/img_biz/partner.png"/>
+                    </a>
+                </div>
+                <h4 class="lh30 tc">
+                    <a href="http://hezuo.sh.189.cn/" target="_blank">
+                        合作伙伴
+                    </a>
+                </h4>
+            </li>
+            <li class="h175 fl bwr2 w300">
+                <div class="site tc">
+                    <a href="http://sh.189.cn/biz/aboutus/" target="_blank">
+                        <img src="http://sh.189.cn/images/img_biz/link.png"/>
+                    </a>
+                </div>
+                <h4 class="lh30 tc">
+                    <a href="http://sh.189.cn/biz/aboutus/" target="_blank">
+                        联系我们
+                    </a>
+                </h4>
+            </li>
+        </ul>
+        <div class="fr w255 pl30">
+            <div class="kf fl w134">
+                <a href="javascript:;"
+                   onclick="javascript:window.open(' http://bizapp.qq.com/webc.htm?new=0&amp;sid=800010000&amp;o=sh.ct10000.com&amp;q=7', '_blank', 'height=544, width=644,toolbar=no,scrollbars=no,menubar=no,status=no');"
+                   class="mt20 dplb">
+                    <img src="http://sh.189.cn/images/img_biz/qqkf.png"/>
+                </a>
+                <a href="http://im.ct10000.com/webclient/index?cityId=3100" class="mt20 dplb" target="_blank">
+                    <img src="http://sh.189.cn/images/img_biz/zxkf.png"/>
+                </a>
+            </div>
+            <div class="huango fr">
+                <img src="http://sh.189.cn/images/img_biz/huango.png"/>
+            </div>
+        </div>
+    </div>
+    <div class="footerLine w100 btw pt20">
+        <div class="footTwo pt30 w1180 m0">
+            <div class="clearfix cl_style tc w1180 f12">
+                <a href="http://www.shtel.com.cn/" target="_blank">
+                    关于我们
+                </a>
+            <span class="f12 color9">
+              |
+            </span>
+                <a href="http://sh.189.cn/support" target="_blank">
+                    使用帮助
+                </a>
+            <span class="f12 color9">
+              |
+            </span>
+                <a href="http://hezuo.sh.189.cn/" target="_blank">
+                    业务合作
+                </a>
+            <span class="f12 color9">
+              |
+            </span>
+                <a href="http://www.189.cn/sh/notice_list/" target="_blank">
+                    网厅公告
+                </a>
+            <span class="f12 color9">
+              |
+            </span>
+                <a href="http://sh.189.cn/sitemap" target="_blank">
+                    网站导航
+                </a>
+            <span class="f12 color9">
+              |
+            </span>
+                <a href="http://agent.sh.ct10000.com/" target="_blank">
+                    代理商专区
+                </a>
+            </div>
+            <div class="clearfix">
+                <p class="foot_style f12 tc mt10">
+                    版权所有©2012 中国电信集团公司 [ 增值电信业务经营许可证 A2.B1.B2-20090001 ] ICP 证号:京 ICP 备 09031924号
+                </p>
+            </div>
+            <div class="foot_img w1180 tc mt25">
+                <img src="http://sh.189.cn/images/img_biz/footerPic7.png"
+                     data-original="http://sh.189.cn/images/img_biz/footerPic7.png"
+                     style="-webkit-user-select: none; display: inline;"/>
+            </div>
+        </div>
+    </div>
+</div>
+<!--尾部 结束-->  </body>
+</html>
