@@ -10,6 +10,18 @@ import java.io.IOException;
  */
 public class StreamUtil {
 
+    public static void close(Closeable ... closeable) {
+        for (Closeable closeable1 : closeable) {
+            close(closeable1);
+        }
+    }
+
+    public static void close(AutoCloseable ... closeable) {
+        for (AutoCloseable closeable1 : closeable) {
+            close(closeable1);
+        }
+    }
+
     public static void close(Closeable closeable) {
         if (closeable != null) {
             try {

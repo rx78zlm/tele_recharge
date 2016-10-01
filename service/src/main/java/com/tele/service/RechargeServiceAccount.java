@@ -9,6 +9,8 @@ import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import com.google.common.collect.Lists;
 import com.tele.model.ChargeRequest;
 import com.tele.model.ChargeResponse;
+import com.tele.model.QueryResponse;
+import com.tele.model.Response;
 import com.tele.utils.StreamUtil;
 import com.tele.utils.XLSUtil;
 import lombok.extern.log4j.Log4j;
@@ -22,9 +24,11 @@ import java.util.concurrent.TimeUnit;
  * @date 16-9-25
  */
 @Log4j
-public class RechargeServiceAccount {
+public class RechargeServiceAccount extends BaseService {
 
     public static final String URL = "http://service.sh.189.cn/service/biz/pay/fenZhang";
+
+    private QueryService queryService = new QueryService();
 
     public String recharge(WebClient webClient, ChargeRequest chargeRequest) {
         String result = "";
@@ -49,48 +53,76 @@ public class RechargeServiceAccount {
         return result;
     }
 
-    public List<ChargeResponse> recharge(List<ChargeRequest> chargeRequestList) {
+    /**
+     * 批量充值
+     * @param chargeRequestList 充值请求
+     * @return  充值结果
+     */
+    public List<ChargeResponse> rechargeBatch(List<ChargeRequest> chargeRequestList) {
         WebClient webClient = createWebClient();
         List<ChargeResponse> responseList = Lists.newArrayList();
-        int count = 0;
         for (ChargeRequest chargeRequest : chargeRequestList) {
-            ChargeResponse response = new ChargeResponse();
-            response.setAccountNo(chargeRequest.getAccountNo());
-            response.setCardNo(chargeRequest.getCardNo());
-            response.setCardPwd(chargeRequest.getCardPwd());
-            response.setMessage(recharge(webClient, chargeRequest));
-            responseList.add(response);
-            count++;
-            if (count % 10 == 0) {
-                try {
-                    TimeUnit.SECONDS.sleep(3);
-                } catch (InterruptedException e) {
-                    log.error(e);
-                }
+            responseList.add(rechargeOnce(webClient, chargeRequest));
+            try {
+                TimeUnit.SECONDS.sleep(1);
+            } catch (InterruptedException e) {
+                log.error(e);
             }
         }
         StreamUtil.close(webClient);
         return responseList;
     }
 
-    public WebClient createWebClient() {
-        WebClient webClient = new WebClient(BrowserVersion.CHROME);
-        webClient.getOptions().setUseInsecureSSL(true);
-        webClient.getOptions().setJavaScriptEnabled(true);
-        webClient.getOptions().setCssEnabled(false);
-        webClient.getOptions().setRedirectEnabled(true);
-        webClient.setAjaxController(new NicelyResynchronizingAjaxController());
-        webClient.getOptions().setThrowExceptionOnScriptError(false);
-        webClient.setJavaScriptTimeout(30000);
-        return webClient;
-    }
-
-    public void recharge(String srcFile, String msgFile) {
+    public Response<String> recharge(String srcFile, String msgFile) {
         XLSUtil xlsUtil = new XLSUtil();
-        List<ChargeRequest> requestList = xlsUtil.read(srcFile);
-        List<ChargeResponse> responseList = recharge(requestList);
+        Response<String> response = new Response<>();
+        Response<List<ChargeRequest>> readResp = xlsUtil.read(srcFile);
+        if (!readResp.isSuccess()) {
+            response.setSuccess(false);
+            response.setErrMsg(readResp.getErrMsg());
+            return response;
+        }
+        List<ChargeRequest> requestList = readResp.getData();
+        List<ChargeResponse> responseList = rechargeBatch(requestList);
         boolean result = xlsUtil.write(responseList, msgFile);
         log.info("执行结果：" + result);
+        response.setSuccess(result);
+        return response;
     }
 
+    public Response<List<ChargeRequest>> readFile(String srcFile) {
+        XLSUtil xlsUtil = new XLSUtil();
+        return xlsUtil.read(srcFile);
+    }
+
+    /**
+     * 单次充值
+     * @param webClient 连接
+     * @param chargeRequest 充值请求
+     * @return  充值结果
+     */
+    public ChargeResponse rechargeOnce(WebClient webClient, ChargeRequest chargeRequest) {
+        ChargeResponse response = new ChargeResponse();
+        response.setSuccess(false);
+        response.setAccountNo(chargeRequest.getAccountNo());
+        response.setCardNo(chargeRequest.getCardNo());
+        response.setCardPwd(chargeRequest.getCardPwd());
+        int times = 0;
+        while (!response.isSuccess() && times < 4) {
+            String respStr = recharge(webClient, chargeRequest);
+            response.setMessage(respStr);
+            response.setSuccess("".equals(respStr));
+            times++;
+        }
+        times = 0;
+        if (!response.isSuccess()) {
+            // 充值失败，查询卡信息
+            Response<QueryResponse> queryBalance = new Response<>();
+            while (!queryBalance.isSuccess() && times < 4) {
+                queryBalance = queryService.queryBalance(chargeRequest.getCardNo());
+                times++;
+            }
+        }
+        return response;
+    }
 }

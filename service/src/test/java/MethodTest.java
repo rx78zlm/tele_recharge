@@ -1,5 +1,8 @@
-import com.google.common.collect.Tables;
+import com.tele.model.ChargeRequest;
+import com.tele.model.ChargeResponse;
 import com.tele.service.RechargeServiceAccount;
+import com.tele.utils.CheckUtil;
+import com.tele.utils.DirNameUtil;
 import com.tele.utils.XLSUtil;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
@@ -107,4 +110,37 @@ public class MethodTest {
         RechargeServiceAccount rechargeService = new RechargeServiceAccount();
         rechargeService.recharge(srcFile, msgFile);
     }
+
+    @Test
+    public void testMacAddress() {
+        try {
+            System.out.println(CheckUtil.getMacAddress());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void testFileName() {
+        String fileName = "C:/config.ini";
+        String dirName = "d:\\tmp\\";
+        System.out.println("[" + DirNameUtil.getDirName(dirName) + "]");
+    }
+
+    @Test
+    public void testCharge() {
+        RechargeServiceAccount service = new RechargeServiceAccount();
+        ChargeRequest chargeRequest = new ChargeRequest();
+        // 96466070390,0211001603270194006,210523986201323991
+        // 96466070390,0211001603270194007,210523986201323991
+        // 96466070390,0211001603270194008,210523986201323991
+        chargeRequest.setAccountNo("96466070390");
+        chargeRequest.setCardNo("0211001603270194007");
+        chargeRequest.setCardPwd("210523986201323991");
+        ChargeResponse response = service.rechargeOnce(service.createWebClient(), chargeRequest);
+        System.out.println(response);
+    }
+
+
+
 }

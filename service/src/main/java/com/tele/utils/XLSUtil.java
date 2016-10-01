@@ -3,6 +3,7 @@ package com.tele.utils;
 import com.google.common.collect.Lists;
 import com.tele.model.ChargeRequest;
 import com.tele.model.ChargeResponse;
+import com.tele.model.Response;
 import lombok.extern.log4j.Log4j;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.*;
@@ -24,9 +25,10 @@ public class XLSUtil {
      * @param fileName excel
      * @return  充值请求信息
      */
-    public List<ChargeRequest> read(String fileName) {
+    public Response<List<ChargeRequest>> read(String fileName) {
         List<ChargeRequest> cardInfoList = Lists.newArrayList();
         InputStream fio = null;
+        Response<List<ChargeRequest>> response = new Response<>();
         try {
             fio = new FileInputStream(fileName);
             Workbook book = WorkbookFactory.create(fio);
@@ -37,14 +39,19 @@ public class XLSUtil {
                 info.setAccountNo(row.getCell(0).getStringCellValue());
                 info.setCardNo(row.getCell(1).getStringCellValue());
                 info.setCardPwd(row.getCell(2).getStringCellValue());
+                ParamValidate.validateParams(info);
                 cardInfoList.add(info);
             }
-        } catch (IOException | InvalidFormatException e) {
+            response.setSuccess(true);
+            response.setData(cardInfoList);
+        } catch (Exception e) {
+            response.setSuccess(false);
+            response.setErrMsg("文件内容有误，[" + e.getMessage() + "]");
             log.error(e);
         } finally {
             StreamUtil.close(fio);
         }
-        return cardInfoList;
+        return response;
     }
 
     /**
@@ -66,20 +73,34 @@ public class XLSUtil {
             Cell cardNoCell = titleRow.createCell(1);
             Cell cardPwdCell = titleRow.createCell(2);
             Cell msgCell = titleRow.createCell(3);
+            Cell cardStatusCell = titleRow.createCell(4);
+            Cell cardValueCell = titleRow.createCell(5);
+            Cell expirationTimeCell = titleRow.createCell(6);
             accountCell.setCellValue("分账序号");
             cardNoCell.setCellValue("卡号");
             cardPwdCell.setCellValue("卡密");
             msgCell.setCellValue("充值结果");
+            cardStatusCell.setCellValue("充值卡状态");
+            cardValueCell.setCellValue("充值卡余额");
+            expirationTimeCell.setCellValue("充值卡有效期");
             for (ChargeResponse response : responses) {
                 Row row = sheet.createRow(rowNum++);
                 accountCell = row.createCell(0);
                 cardNoCell = row.createCell(1);
                 cardPwdCell = row.createCell(2);
                 msgCell = row.createCell(3);
+                cardStatusCell = row.createCell(4);
+                cardValueCell = row.createCell(5);
+                expirationTimeCell = row.createCell(6);
                 accountCell.setCellValue(response.getAccountNo());
                 cardNoCell.setCellValue(response.getCardNo());
                 cardPwdCell.setCellValue(response.getCardPwd());
                 msgCell.setCellValue(response.getMessage());
+                if (response.getQueryResponse() != null) {
+                    cardStatusCell.setCellValue(response.getQueryResponse().getCardStatus());
+                    cardValueCell.setCellValue(response.getQueryResponse().getCardValue());
+                    expirationTimeCell.setCellValue(response.getQueryResponse().getExpirationTime());
+                }
             }
             book.write(fileOut);
             result = true;
