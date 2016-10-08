@@ -17,7 +17,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.util.Date;
 import java.util.List;
 import java.util.Vector;
 import java.util.concurrent.TimeUnit;
@@ -43,7 +42,7 @@ public class MainView implements ActionListener {
     JButton btnChoose = new JButton("...");// 选择
     JButton btnSave = new JButton("...");// 选择
     JFileChooser jfc = new JFileChooser();// 文件选择器
-    JLabel labelResult = new JLabel("1111111111111", SwingConstants.CENTER);       // 进度
+    JLabel labelResult = new JLabel("", SwingConstants.CENTER);       // 进度
     JButton btnCommit = new JButton("确定");
     JTable table = null;
     Vector cellsVector = new Vector<>();
@@ -126,7 +125,9 @@ public class MainView implements ActionListener {
             if (!checkFile()) {
                 JOptionPane.showMessageDialog(null, "请输入正确的文件路径", "错误", JOptionPane.ERROR_MESSAGE);
                 finishProcess();
+                return;
             }
+            /*
             SwingUtilities.invokeLater(
                 new Runnable() {
                     @Override
@@ -174,6 +175,7 @@ public class MainView implements ActionListener {
                     }
                 }
             );
+            */
             new Thread(new Runnable() {
                 @Override
                 public void run() {

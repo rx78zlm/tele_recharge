@@ -141,6 +141,9 @@ public class MethodTest {
         System.out.println(response);
     }
 
-
+    @Test
+    public void testGetPath() {
+        System.out.println(System.getProperty("user.dir"));
+    }
 
 }

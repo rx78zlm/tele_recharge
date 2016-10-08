@@ -11,11 +11,21 @@ import java.net.URL;
  */
 public class ValidCodeUtil {
 
+    public static final String WORK_DIR = System.getProperty("user.dir") + "\\";
+//    private static final String WORK_DIR = "d:\\";
+    public static final String EXE_PATH = WORK_DIR + "getcode.exe";
+    public static final String PIC_PATH = WORK_DIR + "tmpcode.jpg";
+    public static final String TXT_PATH = WORK_DIR + "tmpcode.txt";
+    public static final String TMP_PATH = WORK_DIR + "tmpcode";
+
     public static String decrypt() {
         String str1 = "";
         try {
-            String commons[] = {"D:\\getcode.exe", "d:\\tmpcode.jpg",
+            String commons[] = {EXE_PATH, PIC_PATH, TMP_PATH};
+            /*
+            String commons[] = { "D:\\getcode.exe", "d:\\tmpcode.jpg",
                     "d:\\tmpcode"};
+            */
             Process pro = Runtime.getRuntime().exec(commons);
             pro.waitFor();
         } catch (Exception e) {
@@ -25,8 +35,8 @@ public class ValidCodeUtil {
         InputStreamReader isr = null;
         BufferedReader br = null;
         try {
-            String str = "";
-            fis = new FileInputStream("d:\\tmpcode.txt");
+            String str;
+            fis = new FileInputStream(TXT_PATH);
             isr = new InputStreamReader(fis);
             br = new BufferedReader(isr);
             while ((str = br.readLine()) != null) {
@@ -56,7 +66,7 @@ public class ValidCodeUtil {
             httpUrl = (HttpURLConnection) url.openConnection();
             httpUrl.connect();
             bis = new BufferedInputStream(httpUrl.getInputStream());
-            fos = new FileOutputStream("d:\\tmpcode.jpg");
+            fos = new FileOutputStream(PIC_PATH);
             while ((size = bis.read(buf)) != -1) {
                 fos.write(buf, 0, size);
             }

@@ -34,7 +34,7 @@ public class QueryService extends BaseService {
             HtmlAnchor button = div.querySelector(".sub-btn");
             inputCard.setValueAttribute(cardNo);
             HtmlImage image = queryPage.getHtmlElementById("randNum");
-            image.saveAs(new File("d:\\tmpcode.jpg"));
+            image.saveAs(new File(ValidCodeUtil.PIC_PATH));
             String code = ValidCodeUtil.decrypt();
             inputCheck.setValueAttribute(code);
             HtmlPage queryResult = button.click();

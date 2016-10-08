@@ -1,5 +1,6 @@
 package com.tele.utils;
 
+import lombok.extern.log4j.Log4j;
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.net.NetworkInterface;
@@ -10,11 +11,14 @@ import java.util.Enumeration;
  * @package com.tele.utils
  * @date 16-9-29
  */
+@Log4j
 public class CheckUtil {
 
     public static String[] MAC_ADDRESS = {
             "9C-4E-36-CB-0F-B4",
-            "9C-4E-36-CB-0F-B3"
+            "3C-97-0E-C5-82-05",
+            "00-0E-C6-C5-00-FF",
+            "F8-16-54-29-74-67"
     };
 
     public static String getMacAddress() throws Exception {
@@ -39,7 +43,11 @@ public class CheckUtil {
     public static boolean checkMacAddress() {
         try {
             String localMac = getMacAddress();
-            return ArrayUtils.contains(MAC_ADDRESS, localMac);
+            boolean result = ArrayUtils.contains(MAC_ADDRESS, localMac);
+            if (!result) {
+                log.info(String.format("mac address is error,%s", localMac));
+            }
+            return result;
         } catch (Exception e) {
             return false;
         }
