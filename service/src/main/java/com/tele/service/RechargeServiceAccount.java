@@ -14,6 +14,7 @@ import com.tele.model.Response;
 import com.tele.utils.StreamUtil;
 import com.tele.utils.XLSUtil;
 import lombok.extern.log4j.Log4j;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -108,20 +109,21 @@ public class RechargeServiceAccount extends BaseService {
         response.setCardNo(chargeRequest.getCardNo());
         response.setCardPwd(chargeRequest.getCardPwd());
         int times = 0;
-        while (!response.isSuccess() && times < 4) {
+        while (!response.isSuccess() && times < 3) {
             String respStr = recharge(webClient, chargeRequest);
             response.setMessage(respStr);
-            response.setSuccess("".equals(respStr));
+            response.setSuccess(StringUtils.contains(respStr, "支付成功"));
             times++;
         }
         times = 0;
         if (!response.isSuccess()) {
             // 充值失败，查询卡信息
             Response<QueryResponse> queryBalance = new Response<>();
-            while (!queryBalance.isSuccess() && times < 4) {
+            while (!queryBalance.isSuccess() && times < 3) {
                 queryBalance = queryService.queryBalance(chargeRequest.getCardNo());
                 times++;
             }
+            response.setQueryResponse(queryBalance.getData());
         }
         return response;
     }

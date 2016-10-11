@@ -85,7 +85,7 @@ public class QueryService extends BaseService {
 
     public static void main(String[] args) {
         QueryService queryService = new QueryService();
-        Response<QueryResponse> response = queryService.queryBalance("1111111111111");
+        Response<QueryResponse> response = queryService.queryBalance("0211001407160004904");
         System.out.println(response);
     }
 }
