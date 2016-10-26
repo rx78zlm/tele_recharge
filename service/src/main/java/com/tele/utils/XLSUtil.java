@@ -29,12 +29,13 @@ public class XLSUtil {
         List<ChargeRequest> cardInfoList = Lists.newArrayList();
         InputStream fio = null;
         Response<List<ChargeRequest>> response = new Response<>();
+        int rowNum = 0;
         try {
             fio = new FileInputStream(fileName);
             Workbook book = WorkbookFactory.create(fio);
             Sheet sheet = book.getSheetAt(0);
-            for(int r = sheet.getFirstRowNum()+1; r <= sheet.getLastRowNum(); r++) {
-                Row row = sheet.getRow(r);
+            for(rowNum = sheet.getFirstRowNum()+1; rowNum <= sheet.getLastRowNum(); rowNum++) {
+                Row row = sheet.getRow(rowNum);
                 ChargeRequest info = new ChargeRequest();
                 info.setAccountNo(row.getCell(0).getStringCellValue());
                 info.setCardNo(row.getCell(1).getStringCellValue());
@@ -46,8 +47,8 @@ public class XLSUtil {
             response.setData(cardInfoList);
         } catch (Exception e) {
             response.setSuccess(false);
-            response.setErrMsg("文件内容有误，[" + e.getMessage() + "]");
-            log.error(e);
+            response.setErrMsg("行号：[" + rowNum +"],文件内容有误，[" + e.getMessage() + "]");
+            log.error("行号：[" + rowNum +"]", e);
         } finally {
             StreamUtil.close(fio);
         }
